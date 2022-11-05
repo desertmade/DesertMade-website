@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta name="viewport" content="with=device-width, initial-scale=1.0">
+        <title>Desert Made Cleaning</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/25e856b2f2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="images/temp_logo.jpg"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Schedule</a></li>
+                    <li><a href="#">Quote</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+
+    <div class="text-box">
+        <h1>Desert Made Cleaning</h1>
+        <p>Desert Made is a local residential cleaning service founded here in the Valley of the Sun!</p>
+    </div>
+
+    </section>
+
+<!----------------------------------------------------------Services------------------------------------------------------------->
+   
+<div id="services">
+    <div class="container">
+        <div class="row">
+            <div class="services-col-1">
+                <img src="images/services_pic.jpg">
+            </div>
+            <div class="services-col-2">
+                <h1 class="sub-title">Cleaning Done For You</h1>
+                <p> Desert Made is here to sweep, mop, dust, shine, and disinfect your entire home, including kitchens, bathrooms, bedrooms, and living rooms.<br> Here are just some of the things you can expect us to clean when you choose Desert Made for your housekeeping needs:</p>
+
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('bedrooms')">Bedrooms</p>
+                    <p class="tab-links" onclick="opentab('bathrooms')">Bathrooms</p>
+                    <p class="tab-links" onclick="opentab('kitchen')">Kitchen</p>
+                </div>
+                <div class="tab-contents active-tab" id="bedrooms">
+                    <ul>
+                        <li>Change sheets/make bed</li>
+                        <li>Dust/Disinfect table surfaces</li>
+                        <li>Empty trash</li>
+                        <li>Vacuum and/or Mop Floor</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="bathrooms">
+                    <ul>
+                        <li>Clean sinks/countertops</li>
+                        <li>Clean toilet and shower</li>
+                        <li>Clean mirrors</li>
+                        <li>Empty trash</li>
+                        <li>Mop Floor</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="kitchen">
+                    <ul>
+                        <li>Clean sink and countertops</li>
+                        <li>Wipe down appliance exteriors (stove, oven, fridge)</li>
+                        <li>Clean inside and outside of microwave</li>
+                        <li>Take out garbage</li>
+                        <li>Sweep and Mop Floor</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!----------------------------------------------------------Schedule------------------------------------------------------------->
+
+<div id="schedule">
+    <div class="container">
+        <h1 class="sub-title">Schedule for You</h1>
+        <div class="schedule-list">
+            <div>
+                <i class="fa-solid fa-soap"></i>
+                <h2>Monthly cleaning</h2>
+                <p> If you just need things spruced up every few weeks, monthly service may be your solution</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-shower"></i>
+                <h2>Bi-weekly cleaning</h2>
+                <p> If you don't mind doing a little work around the house, our bi-weekly cleaning service may be the best solution</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-broom"></i>
+                <h2>Weekly cleaning</h2>
+                <p>Reclaim your weekends with a weekly cleaning service for more time at the end of those long weeks.</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-bath"></i>
+                <h2>One-time cleaning</h2>
+                <p>When your house needs a one-time cleaning service, choose Desert Made!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!----------------------------------------------------------Quote------------------------------------------------------------->
+
+<div class="calconic-calculator"  data-calculatorid="6364e9673971690029f3a17c"></div>
+<script>
+  (function() { var qs,j,q,s,d=document, gi=d.getElementById,
+  ce=d.createElement, gt=d.getElementsByTagName,
+  id="calconic_", b="https://cdn.calconic.com/static/js/";
+  if(!gi.call(d,id)) { j=ce.call(d,"script"); j.id=id; j.type="text/javascript"; j.async=true;
+  j.dataset.calconic=true;
+  j.src=b+"calconic.min.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(j,q) }
+})();
+</script>
+
+<!-----Services Tabs Button scripts----->
+
+<script>
+
+var tablinks = document.getElementsByClassName('tab-links')
+var tabcontents = document.getElementsByClassName('tab-contents')
+function opentab(tabname){
+    for(tablink of tablinks){
+        tablink.classList.remove("active-link");
+    }
+    for(tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab");
+    }
+    event.currentTarget.classList.add("active-link")
+    document.getElementById(tabname).classList.add("active-tab");
+}
+
+</script>
+
+<!-----Mobile Screen Menu scripts----->
+<script>
+var navLinks = document.getElementById("navLinks");
+function showMenu(){
+    navLinks.style.right="0";
+}    
+function hideMenu(){
+    navLinks.style.right="-200px";
+}
+</script>
+
+         
+</body>
+</html>
