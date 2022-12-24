@@ -12,14 +12,15 @@
 <body>
     <section class="header">
         <nav>
-            <a href="index.html"><img src="images/temp_logo.jpg"></a>
+            <a href="index.html"><img src="images/transparent-new-logo(1).png"></a>
             <div class="nav-links" id="navLinks">
                 <i class="fa fa-times" onclick="hideMenu()"></i>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Schedule</a></li>
-                    <li><a href="#">Quote</a></li>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#schedule">Schedule</a></li>
+                    <li><a href="#quote">Quote</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -110,6 +111,32 @@
     </div>
 </div>
 
+<!---------------------------------------------------------Contact------------------------------------------------------------>
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-regular fa-paper-plane"></i>desertmadecleaning@gmail.com</p>
+                <p><i class="fa-solid fa-mobile-screen-button"></i>6023801995</p>
+                <div class="social-icons">
+                    <a href=""><i class="fa-brands fa-facebook"></i>
+                    <a href=""><i class="fa-brands fa-instagram"></i>
+                </div>
+            </div> 
+            <div class="contact-right">
+             <form name="submit-to-google-sheet">
+                <input type="text" name="Name" placeholder="Your Name" required>
+                <input type="email" name="eEail" placeholder="Your Email" required>
+                <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                <button type="submit" class="btn btn2">Submit</button>
+             </form>
+             <span id="msgs"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!----------------------------------------------------------Quote------------------------------------------------------------->
 
 <div class="calconic-calculator"  data-calculatorid="6364e9673971690029f3a17c"></div>
@@ -153,6 +180,24 @@ function hideMenu(){
 }
 </script>
 
-         
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzQPTkcsKm8J80rU_5zoRwL-S1BWoMuuKgtFoPPTheoNXkxK35aSuspiwIQSsg8wV6b/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
 </body>
 </html>
