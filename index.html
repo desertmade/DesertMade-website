@@ -19,8 +19,8 @@
                     <li><a href="#header">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#schedule">Schedule</a></li>
-                    <li><a href="#quote">Quote</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#quote"> Quote</a></li>
+                    <li><a href="#contact"> Contact</a></li>
                 </ul>
             </div>
             <i class="fa fa-bars" onclick="showMenu()"></i>
@@ -112,6 +112,7 @@
 </div>
 
 <!---------------------------------------------------------Contact------------------------------------------------------------>
+<!----
 <div id="contact">
     <div class="container">
         <div class="row">
@@ -121,83 +122,70 @@
                 <p><i class="fa-solid fa-mobile-screen-button"></i>6023801995</p>
                 <div class="social-icons">
                     <a href=""><i class="fa-brands fa-facebook"></i>
-                    <a href=""><i class="fa-brands fa-instagram"></i>
+                        <a href=""><i class="fa-brands fa-instagram"></i>
                 </div>
-            </div> 
+            </div>
             <div class="contact-right">
-             <form name="submit-to-google-sheet">
-                <input type="text" name="Name" placeholder="Your Name" required>
-                <input type="email" name="eEail" placeholder="Your Email" required>
-                <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                <button type="submit" class="btn btn2">Submit</button>
-             </form>
-             <span id="msgs"></span>
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="eEail" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="button" class="btn">Submit</button>
+                </form>
+                <span id="msgs"></span>
             </div>
         </div>
     </div>
 </div>
-
+-->
 <!----------------------------------------------------------Quote------------------------------------------------------------->
+<div id="quote">
+    <h1 class="sub-title">Quote</h1>
+        <div class="boxed">
+            <label>Bedrooms</label>
+            <br><input type="text" id="n1"/><br><br>
+            <br><label>Bathrooms</label>
+            <br><input type="text" id="n2"/><br><br>
+            <br><label>$Price</label>
+            <br><input type="text" id="result"/><br><br>
+        
+            <select id="frequency" onchange="calculate()">
+                <option disabled="disabled" selected="selected">Select frequency</option>
+                <option value="one-time">One-time</option>
+                <option value="monthly">Monthly</option>
+                <option value="bi-weekly">Bi-weekly</option>
+                <option value="weekly">Weekly</option>
+            </select>
+        
+            <script>
+                function calculate()
+                {
+                    var bedrooms = parseFloat(document.getElementById('n1').value);
+                    var bathrooms = parseFloat(document.getElementById('n2').value);
+                    var freq = document.getElementById('frequency').value;
+        
+                    if(freq === "one-time")
+                    {
+                        document.getElementById('result').value = (20*bedrooms)+(30*bathrooms)+25;
+                    }
+                    if(freq === "monthly")
+                    {
+                        document.getElementById('result').value = ((20*bedrooms)+(30*bathrooms)+25)-(((20*bedrooms)+(30*bathrooms)+25)*0.2);
+                    }
+                    if(freq === "bi-weekly")
+                    {
+                        document.getElementById('result').value = ((20*bedrooms)+(30*bathrooms)+25)-(((20*bedrooms)+(30*bathrooms)+25)*0.26);
+                    }
+                    if(freq === "weekly")
+                    {
+                        document.getElementById('result').value = ((20*bedrooms)+(30*bathrooms)+25)-(((20*bedrooms)+(30*bathrooms)+25)*0.30);
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</div>
 
-<div class="calconic-calculator"  data-calculatorid="6364e9673971690029f3a17c"></div>
-<script>
-  (function() { var qs,j,q,s,d=document, gi=d.getElementById,
-  ce=d.createElement, gt=d.getElementsByTagName,
-  id="calconic_", b="https://cdn.calconic.com/static/js/";
-  if(!gi.call(d,id)) { j=ce.call(d,"script"); j.id=id; j.type="text/javascript"; j.async=true;
-  j.dataset.calconic=true;
-  j.src=b+"calconic.min.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(j,q) }
-})();
-</script>
-
-<!-----Services Tabs Button scripts----->
-
-<script>
-
-var tablinks = document.getElementsByClassName('tab-links')
-var tabcontents = document.getElementsByClassName('tab-contents')
-function opentab(tabname){
-    for(tablink of tablinks){
-        tablink.classList.remove("active-link");
-    }
-    for(tabcontent of tabcontents){
-        tabcontent.classList.remove("active-tab");
-    }
-    event.currentTarget.classList.add("active-link")
-    document.getElementById(tabname).classList.add("active-tab");
-}
-
-</script>
-
-<!-----Mobile Screen Menu scripts----->
-<script>
-var navLinks = document.getElementById("navLinks");
-function showMenu(){
-    navLinks.style.right="0";
-}    
-function hideMenu(){
-    navLinks.style.right="-200px";
-}
-</script>
-
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzQPTkcsKm8J80rU_5zoRwL-S1BWoMuuKgtFoPPTheoNXkxK35aSuspiwIQSsg8wV6b/exec'
-    const form = document.forms['submit-to-google-sheet']
-    const msg = document.getElementById("msg")
-
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-            msg.innerHTML = "Message sent successfully"
-            setTimeout(function(){
-                msg.innerHTML = ""
-            },5000)
-            form.reset()
-        })
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
 
 </body>
 </html>
